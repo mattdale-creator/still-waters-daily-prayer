@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-fontsize="md">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Still Waters — a quiet place for daily Christian prayer. A verse, a prayer, and a guided time with God, every day.">
+  <meta name="theme-color" content="#f6f2e9">
+  <title>Still Waters · Daily Prayer</title>
+  <link rel="stylesheet" href="css/styles.css?v=2">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ctext y='19' font-size='19'%3E%F0%9F%95%8A%EF%B8%8F%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="app-header">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 10c2.2-2 4.3-2 6.5 0s4.3 2 6.5 0 4.3-2 5 0"/>
+        <path d="M3 15c2.2-2 4.3-2 6.5 0s4.3 2 6.5 0 4.3-2 5 0"/>
+      </svg>
+      <div class="brand-text">
+        <h1>Still Waters</h1>
+        <p class="tagline">Daily prayer, beside quiet waters</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div id="streakBadge" class="streak-badge" title="Days of prayer in a row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3c1.5 2.5 4 4.5 4 8a4 4 0 0 1-8 0c0-1.5.5-2.5 1.2-3.7C9.9 8.6 10.6 10 12 10c0-2.5-.8-4.5 0-7z"/>
+          <path d="M9 21h6"/><path d="M12 15v6"/>
+        </svg>
+        <span id="streakCount">0</span><span class="visually-hidden" id="streakLabel"> day prayer streak</span>
+      </div>
+      <button id="settingsBtn" class="icon-btn" type="button" aria-haspopup="dialog" aria-label="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3.2"/>
+          <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 8.98 19.4a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 8.98a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9A1.7 1.7 0 0 0 10.03 3.09V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V9c.42.6 1 .97 1.56 1.03H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51.97z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Main">
+    <button class="tab" type="button" data-view="today" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+      <span>Today</span>
+    </button>
+    <button class="tab" type="button" data-view="pray" aria-current="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c1.5 2.5 4 4.5 4 8a4 4 0 0 1-8 0c0-3.5 2.5-5.5 4-8z"/><path d="M7 21c1.5-1.5 3-2 5-2s3.5.5 5 2"/></svg>
+      <span>Pray</span>
+    </button>
+    <button class="tab" type="button" data-view="library" aria-current="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6c-2-1.8-4.5-2-8-2v14c3.5 0 6 .2 8 2 2-1.8 4.5-2 8-2V4c-3.5 0-6 .2-8 2z"/><path d="M12 6v14"/></svg>
+      <span>Prayers</span>
+    </button>
+    <button class="tab" type="button" data-view="journal" aria-current="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 7.2 9 19l-4 1 1-4L17.8 4.2a2.1 2.1 0 0 1 3 3z"/></svg>
+      <span>Journal</span>
+    </button>
+  </nav>
+
+  <main id="main">
+
+    <!-- ============ TODAY ============ -->
+    <section id="view-today" class="view" aria-label="Today">
+      <div class="day-header">
+        <h2 id="greeting">Good morning</h2>
+        <p id="todayDate" class="day-date"></p>
+      </div>
+
+      <div id="dataNotice" class="card notice" hidden>
+        <p>Today’s devotional content couldn’t be loaded. Your journal and prayer list are still available.</p>
+      </div>
+
+      <article class="card verse-card" id="verseCard">
+        <p class="eyebrow" id="verseTheme"></p>
+        <blockquote class="verse" id="verseText"></blockquote>
+        <div class="verse-foot">
+          <cite id="verseRef"></cite>
+          <div class="foot-actions">
+            <button class="ghost-btn" type="button" id="copyVerseBtn">Copy</button>
+            <button class="ghost-btn" type="button" id="shareVerseBtn">Share</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" id="prayerCard">
+        <div class="card-head">
+          <h3>Prayer for the day</h3>
+          <div class="seg" role="group" aria-label="Choose prayer">
+            <button type="button" id="segMorning" class="seg-btn" aria-pressed="true">Morning</button>
+            <button type="button" id="segEvening" class="seg-btn" aria-pressed="false">Evening</button>
+          </div>
+        </div>
+        <p class="prayer-text" id="dailyPrayerText"></p>
+        <div class="foot-actions card-actions">
+          <button class="ghost-btn" type="button" id="copyDailyPrayerBtn">Copy</button>
+          <button class="ghost-btn" type="button" id="shareDailyPrayerBtn">Share</button>
+        </div>
+      </article>
+
+      <article class="card reflect-card">
+        <h3>Reflect</h3>
+        <p id="reflectionText" class="reflect-q"></p>
+        <button class="ghost-btn" type="button" id="journalThisBtn">Write about this in your journal</button>
+      </article>
+
+      <button class="btn btn-primary btn-big" type="button" id="beginPrayerBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c1.5 2.5 4 4.5 4 8a4 4 0 0 1-8 0c0-3.5 2.5-5.5 4-8z"/></svg>
+        Begin guided prayer
+        <span class="btn-sub">about 5 minutes</span>
+      </button>
+    </section>
+
+    <!-- ============ PRAY (GUIDED) ============ -->
+    <section id="view-pray" class="view" aria-label="Guided prayer" hidden>
+      <div id="prayIntro">
+        <div class="day-header">
+          <h2>A guided time of prayer</h2>
+          <p class="day-date">Adoration · Confession · Thanksgiving · Supplication</p>
+        </div>
+        <article class="card">
+          <p id="prayIntroLead">Set aside about five minutes. You’ll be led gently through stillness, today’s scripture, the four movements of prayer, the Lord’s Prayer, and a closing blessing.</p>
+          <p class="muted">There is no hurry here. Move at your own pace.</p>
+          <button class="btn btn-primary btn-big" type="button" id="startSessionBtn">Begin</button>
+        </article>
+      </div>
+
+      <div id="praySession" hidden>
+        <div class="session-top">
+          <ol id="progressDots" class="dots" aria-hidden="true"></ol>
+          <button type="button" class="ghost-btn" id="exitSessionBtn">End prayer</button>
+        </div>
+        <article class="card step-card" id="stepCard" tabindex="-1">
+          <!-- step content rendered by JS -->
+        </article>
+        <div class="session-controls">
+          <button class="btn btn-ghost" type="button" id="stepBackBtn">Back</button>
+          <button class="btn btn-primary" type="button" id="stepNextBtn">Continue</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LIBRARY ============ -->
+    <section id="view-library" class="view" aria-label="Prayer library" hidden>
+      <div class="day-header">
+        <h2>Prayers of the church</h2>
+        <p class="day-date">Classic prayers, creeds, and psalms — words for when you have none</p>
+      </div>
+      <div id="libraryChips" class="chips" role="group" aria-label="Filter prayers"></div>
+      <div id="libraryList" class="library-list"></div>
+    </section>
+
+    <!-- ============ JOURNAL ============ -->
+    <section id="view-journal" class="view" aria-label="Journal and prayer list" hidden>
+      <div class="day-header">
+        <h2>Journal &amp; prayer list</h2>
+        <p class="day-date">Kept only on this device — between you and God</p>
+      </div>
+
+      <article class="card">
+        <h3>Praying for</h3>
+        <form id="intentionForm" class="add-row">
+          <label class="visually-hidden" for="intentionInput">Add a person or need to pray for</label>
+          <input id="intentionInput" type="text" maxlength="140" placeholder="A person, a need, a hope…" autocomplete="off">
+          <button class="btn btn-primary" type="submit">Add</button>
+        </form>
+        <ul id="prayingList" class="plain-list"></ul>
+        <p id="prayingEmpty" class="muted">Your prayer list is empty. Add someone or something to carry in prayer.</p>
+        <details id="answeredWrap">
+          <summary id="answeredSummary">Answered prayers</summary>
+          <ul id="answeredList" class="plain-list"></ul>
+        </details>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <h3 id="journalTodayHeading">Today’s entry</h3>
+          <span id="saveState" class="save-state" aria-live="polite"></span>
+        </div>
+        <label class="visually-hidden" for="journalToday">Journal entry for today</label>
+        <textarea id="journalToday" rows="5" placeholder="What is on your heart today?"></textarea>
+      </article>
+
+      <div id="pastEntries"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Scripture quotations are from the World English Bible (public domain).</p>
+    <p>Your journal, prayer list, and streak are stored only on this device.</p>
+  </footer>
+
+  <!-- ============ SETTINGS ============ -->
+  <dialog id="settingsDialog" aria-labelledby="settingsTitle">
+    <div class="dialog-head">
+      <h2 id="settingsTitle">Settings</h2>
+      <button class="icon-btn" type="button" id="closeSettingsBtn" aria-label="Close settings">✕</button>
+    </div>
+    <fieldset>
+      <legend>Appearance</legend>
+      <div class="radio-row" id="themeRadios">
+        <label><input type="radio" name="theme" value="auto"> Auto</label>
+        <label><input type="radio" name="theme" value="light"> Light</label>
+        <label><input type="radio" name="theme" value="dark"> Dark</label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Text size</legend>
+      <div class="radio-row" id="fontsizeRadios">
+        <label><input type="radio" name="fontsize" value="sm"> Small</label>
+        <label><input type="radio" name="fontsize" value="md"> Medium</label>
+        <label><input type="radio" name="fontsize" value="lg"> Large</label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Your data</legend>
+      <p class="muted">Everything is stored locally in your browser. Nothing is ever sent anywhere.</p>
+      <div class="dialog-actions">
+        <button class="btn btn-ghost" type="button" id="exportDataBtn">Export data</button>
+        <button class="btn btn-danger" type="button" id="clearDataBtn">Clear all data</button>
+      </div>
+    </fieldset>
+    <p class="muted about-line">Still Waters · “He leads me beside still waters. He restores my soul.” — Psalm 23:2–3</p>
+  </dialog>
+
+  <!-- ============ SHARE ============ -->
+  <dialog id="shareDialog" aria-labelledby="shareTitle">
+    <div class="dialog-head">
+      <h2 id="shareTitle">Share this prayer</h2>
+      <button class="icon-btn" type="button" id="closeShareBtn" aria-label="Close share dialog">✕</button>
+    </div>
+    <p id="sharePreview" class="share-preview"></p>
+    <div id="shareGrid" class="share-grid"></div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js?v=2"></script>
+  <script src="js/app.js?v=2"></script>
+</body>
+</html>
