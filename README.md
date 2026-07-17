@@ -45,3 +45,4 @@ daily-prayer/
     ├── data.js     # devotional corpus (31 days, library, guided prompts)
     └── app.js      # all application logic (vanilla JS, IIFE, no deps)
 ```
+
